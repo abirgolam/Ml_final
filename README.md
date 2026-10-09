@@ -33,12 +33,12 @@ Balancing strategies compared (test set):
 
 ## Approach
 1. **Exploration**: distributions of categorical features, a missing-value audit (Medical History, Psychiatric History and Substance Use are 25–33% empty), and class balance.
-2. **Cleaning**: normalized categorical text, mode/median imputation, removed out-of-range ages, checked for duplicates.
+2. **Cleaning**: normalized categorical text, mode/median imputation, flagged out-of-range ages, checked for duplicates.
 3. **Feature engineering**: an `Age_Bin` feature (teen / young / mid / senior) and a correlation check for redundant numeric features (none above 0.8).
 4. **Pipelines**: `ColumnTransformer` (one-hot + scaling) inside an `imblearn` pipeline, so resampling happens **only within training folds** and test data never leaks into SMOTE.
 5. **Models**: Logistic Regression, Random Forest, and KNN, each tuned with stratified CV.
 6. **Evaluation**: accuracy, precision, recall, F1, ROC-AUC, confusion matrices, and Random Forest feature importances.
-7. **Ethics**: discussed in the report: false-negative cost in a health context, and why a model like this should support clinicians, not replace them.
+7. **Ethics**: the report discusses how demographic features can encode existing disparities, so a screening model can amplify bias (for example, over-flagging one gender).
 
 ## Repository layout
 ```
