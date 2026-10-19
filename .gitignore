@@ -1,0 +1,5 @@
+.ipynb_checkpoints/
+__MACOSX/
+.DS_Store
+*.pyc
+.venv/
